@@ -1,9 +1,60 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
+import toast from 'react-hot-toast';
 import { FaCameraRetro, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Register = () => {
+    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const [error, setError] = useState('');
+    const navigate =useNavigate();
+
+
+
+const handleSubmit=(event)=>{
+
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const photoURL = form.photoURL.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(name, email, photoURL, password);
+
+    createUser(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+            setError('');
+            form.reset();
+            handleUpdateProfile(name, photoURL);
+            navigate('/');
+            toast.success('Registration Complete!! Welcome to our site ')
+        })
+        .catch(e => {
+
+            setError(e.message);
+            toast.error(e.message);
+        });
+
+}
+
+const handleUpdateProfile = (name, photoURL) =>{
+
+    const profile = {
+      displayName:name,
+      photoURL:photoURL
+    }
+
+    updateUserProfile(profile)
+    .then(()=>{})
+    .catch(error =>console.error(error));
+  }
+
+
+
+
     return (
         <div style={{backgroundColor:'#F5EEF8', backgroundImage:`url(https://i.pinimg.com/originals/6c/b2/fc/6cb2fc7aa33ba8777830de4d99a1e140.jpg)`, }}>
       <Container>
@@ -16,24 +67,24 @@ const Register = () => {
                   <h2 className="fw-bold mb-2 text-uppercase text-center text-info "> <FaCameraRetro></FaCameraRetro> WELCOME TO WEDSGRAPHY</h2>
                   <p className=" mb-5 text-center text-info">Please Register to See More Features!!</p>
                   <div className="mb-3">
-                    <Form>
+                    <Form onSubmit={handleSubmit}>
                       <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label className="text-center">
-                          Email address
+                          Your Name
                         </Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Control type="text" name='name' placeholder="Enter Name" />
+                      </Form.Group>
+                      <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label className="text-center">
+                          Your PhotoURL
+                        </Form.Label>
+                        <Form.Control type="text" name='photoURL' placeholder="Enter PhotoURL" />
                       </Form.Group>
                       <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label className="text-center">
                           Email address
                         </Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
-                      </Form.Group>
-                      <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label className="text-center">
-                          Email address
-                        </Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Control type="email" name='email' placeholder="Enter email" />
                       </Form.Group>
 
                       <Form.Group
@@ -41,23 +92,22 @@ const Register = () => {
                         controlId="formBasicPassword"
                       >
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control type="password" name='password' placeholder="Password" />
                       </Form.Group>
                       <Form.Group
                         className="mb-3"
                         controlId="formBasicCheckbox"
                       >
-                        <p className="small">
-                          <a className="text-primary" href="#!">
-                            Forgot password?
-                          </a>
-                        </p>
+                        
                       </Form.Group>
                       <div className="d-grid">
                         <Button variant="primary" type="submit">
                           Register
                         </Button>
                       </div>
+                      <Form.Text className="text-danger ms-4">
+                                {error}
+                            </Form.Text>
                     </Form>
                     <div className='mt-3 text-center'>
                     
