@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import {  createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithPopup, updateProfile, } from "firebase/auth";
+import {  createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile, } from "firebase/auth";
 import app from '../../firebase/firebase.config';
 
 
@@ -21,10 +21,19 @@ const AuthProvider = ({children}) => {
         
         return createUserWithEmailAndPassword(auth, email, password)
     }
+    const signIn = (email, password) => {
+        setLoading(true);
+        return signInWithEmailAndPassword(auth, email, password);
+    }
 
     const updateUserProfile = (profile)=>{
-
+        setLoading(true);
         return updateProfile(auth.currentUser, profile);
+    }
+
+    const logOut = () => {
+        setLoading(true);
+        return signOut(auth);
     }
 
     useEffect(()=>{
@@ -33,7 +42,7 @@ const AuthProvider = ({children}) => {
             console.log(currentUser)
         
             setUser(currentUser);
-            // setLoading(false);
+            setLoading(false);
         });
         return () => {
             unsubcribe();
@@ -43,7 +52,7 @@ const AuthProvider = ({children}) => {
 
 
 
-    const authInfo= {user, loading, providerLogin, createUser, updateUserProfile }
+    const authInfo= {user, loading, providerLogin, createUser, updateUserProfile, logOut, signIn }
 
     return (
         <AuthContext.Provider value={authInfo}>

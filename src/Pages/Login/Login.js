@@ -3,16 +3,43 @@ import React, { useContext, useState } from 'react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { FaCameraRetro, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
 
-   const {providerLogin}= useContext(AuthContext);
+   const {providerLogin, signIn}= useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
 
     const [error, setError] = useState('');
+    const navigate =useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
+
+
+
+    const handleSubmit = event =>{
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        signIn(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+            form.reset();
+            setError('');
+            navigate(from, {replace:true});
+            toast.success('Login SucessFully! Thank You')
+        })
+        .catch(error => {
+          console.error(error);
+          setError(error.message);
+          toast.error(error.message);
+
+        })
+    }
 
 
     const handleGoogleSignIn =()=>{
@@ -21,7 +48,7 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
-            // navigate(from, {replace:true});
+            navigate(from, {replace:true});
             toast.success('Login SucessFully! Thank You')
     
         })
@@ -41,7 +68,7 @@ const Login = () => {
                                     <h2 className="fw-bold mb-2 text-uppercase text-center text-info "> <FaCameraRetro></FaCameraRetro> WELCOME TO WEDSGRAPHY</h2>
                                     <p className=" mb-5 text-center text-info">Please Login to See More Features!!</p>
                                     <div className="mb-3">
-                                        <Form>
+                                        <Form onSubmit={handleSubmit}>
                                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                                 <Form.Label className="text-center">
                                                     Email address
@@ -66,10 +93,11 @@ const Login = () => {
                                                 <Button variant="primary" type="submit">
                                                     Login
                                                 </Button>
-                                                <Form.Text className="text-danger ms-4">
+                                                
+                                            </div>
+                                            <Form.Text className="text-danger ms-4">
                                                     {error}
                                                 </Form.Text>
-                                            </div>
                                         </Form>
                                         <div className='mt-3 text-center'>
                                             <Button variant="outline-secondary" onClick={handleGoogleSignIn}><FaGoogle></FaGoogle> Login With Google</Button>

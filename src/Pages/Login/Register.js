@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import toast from 'react-hot-toast';
-import { FaCameraRetro, FaGoogle } from 'react-icons/fa';
+import { FaCameraRetro} from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
@@ -84,7 +84,7 @@ const handleUpdateProfile = (name, photoURL) =>{
                         <Form.Label className="text-center">
                           Email address
                         </Form.Label>
-                        <Form.Control type="email" name='email' placeholder="Enter email" />
+                        <Form.Control type="email" name='email' placeholder="Enter email" required />
                       </Form.Group>
 
                       <Form.Group
@@ -92,7 +92,7 @@ const handleUpdateProfile = (name, photoURL) =>{
                         controlId="formBasicPassword"
                       >
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" name='password' placeholder="Password" />
+                        <Form.Control type="password" name='password' placeholder="Password" required />
                       </Form.Group>
                       <Form.Group
                         className="mb-3"

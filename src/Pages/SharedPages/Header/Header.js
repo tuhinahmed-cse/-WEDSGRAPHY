@@ -1,9 +1,20 @@
-import React from 'react';
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import React, { useContext } from 'react';
+import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaCamera } from 'react-icons/fa';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+
+
+    const handleLogOut =()=>{
+        logOut()
+        .then(() => { })
+        .catch(error => console.error(error))
+
+    }
     return (
         <Navbar collapseOnSelect expand="lg" bg="info" variant="light">
         <Container>
@@ -17,7 +28,29 @@ const Header = () => {
               
             </Nav>
             <Nav>
-              <Nav.Link ><Link to='/login'>Login</Link></Nav.Link>
+              {/* <Nav.Link ><Link to='/login'>Login</Link></Nav.Link> */}
+
+              {
+                                user?.uid ?
+                                    
+                                        <>
+                                        <Nav.Link ><Link to='/blog' style={{textDecoration:'none', color: 'whitesmoke', fontWeight:'bold', marginLeft:'60px',fontSize:'16px'}}>My Reviews</Link></Nav.Link>
+
+                                        <Nav.Link ><Link to='/blog' style={{textDecoration:'none', color: 'whitesmoke', fontWeight:'bold', marginLeft:'60px', marginRight:'40px',fontSize:'16px'}}>Add Service</Link></Nav.Link>
+
+                                        <Button variant="light" onClick={handleLogOut} style={{color:'goldenrod',fontWeight:'700'}}>Log out</Button>
+
+                                        
+                                        
+                                        </>
+                                    :
+                                    <>
+                                       
+
+                                        <Link to='/login'><Button variant="light" style={{color:'goldenrod',fontWeight:'700'}}>Login</Button></Link>
+
+                                    </>
+                            }
               
             </Nav>
           </Navbar.Collapse>
