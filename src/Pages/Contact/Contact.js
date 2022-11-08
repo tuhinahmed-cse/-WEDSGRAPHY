@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Contact = () => {
     return (
@@ -12,7 +13,7 @@ const Contact = () => {
 
 <p className=' text-center mt-5' style={{color:'#7E5109', fontWeight:'700'}}> If you have any kind of question about my service feel free to knock me. I am 24/7 availanle in Phone call Messenger , WhatsApp etc. Also  if you want to know my service charge please contact with me. Thank You</p>
 <br />
-<Button variant="warning">Contact Me</Button>
+<Link to='/register'><Button variant="warning">Contact Me</Button></Link>
 
 </Col>
 <Col lg='4'>
