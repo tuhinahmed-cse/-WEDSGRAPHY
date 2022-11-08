@@ -5,6 +5,7 @@ import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Login/Register";
 import Services from "../../Pages/Services/Services";
 import ErrorPage from "../../Pages/SharedPages/ErrorPage/ErrorPage";
+import Slider from "../../Pages/Slider/Slider";
 
 export const router = createBrowserRouter([
 
@@ -13,7 +14,11 @@ export const router = createBrowserRouter([
     element: <Main></Main>,
     errorElement: <ErrorPage></ErrorPage>,
     children: [
+        {
 
+            path:'/',
+            element: <Slider></Slider>
+        },
         {
             path: '/services',
             element:<Services></Services> 
