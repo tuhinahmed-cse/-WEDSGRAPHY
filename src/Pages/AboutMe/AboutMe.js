@@ -1,7 +1,6 @@
 import React from 'react';
-import { Button, Col, Container, Image, Row } from 'react-bootstrap';
+import {  Col, Container, Row } from 'react-bootstrap';
 import { FaCamera, FaConnectdevelop, FaTools } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 import img from '../../assets/pro.jpg'
 
 const AboutMe = () => {
