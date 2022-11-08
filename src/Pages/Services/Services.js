@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import ServicesCard from './ServicesCard';
 
 const Services = () => {
@@ -25,16 +26,18 @@ const Services = () => {
              <Col lg='10'>
 
             {
-                services.map(service => <ServicesCard key={service.service_id} service={service}></ServicesCard>)
+                services.map(service => <ServicesCard key={service._id} service={service}></ServicesCard>)
             }
 
              </Col>
              <Col></Col>
-
+             
              </Row>
             
-
-            
+             <h1 style={{ textAlign: 'center' }}> 
+             <Link to='/allServices'><Button variant="info">See All Services</Button></Link>
+            </h1>
+             
         </Container>
     );
 };

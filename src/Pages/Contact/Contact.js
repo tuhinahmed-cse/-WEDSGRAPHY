@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Contact = () => {
     return (
-        <Container className='mt-2' style= {{ backgroundColor: '#F5EEF8', backgroundImage: `url(https://fujifilm-x.com/en-us/wp-content/uploads/sites/11/2020/06/EXPOSURE_CENTER_RASK7031.jpg)`, height:'70vh'}}>
+        <Container className='mt-4' style= {{ backgroundColor: '#F5EEF8', backgroundImage: `url(https://fujifilm-x.com/en-us/wp-content/uploads/sites/11/2020/06/EXPOSURE_CENTER_RASK7031.jpg)`, height:'70vh'}}>
             <Row >
 <Col lg='4'></Col>
 <Col lg='4'>

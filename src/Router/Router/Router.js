@@ -5,6 +5,7 @@ import Blog from "../../Pages/Blog/Blog";
 import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Login/Register";
+import AllServices from "../../Pages/Services/AllServices";
 import Services from "../../Pages/Services/Services";
 import ErrorPage from "../../Pages/SharedPages/ErrorPage/ErrorPage";
 import Slider from "../../Pages/Slider/Slider";
@@ -24,6 +25,12 @@ export const router = createBrowserRouter([
             path: '/services',
             element:<Services></Services> 
         },
+
+        {
+            path: '/allServices',
+            element:<AllServices></AllServices> 
+        },
+
 
         {
             path: '/blog',

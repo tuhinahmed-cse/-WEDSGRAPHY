@@ -23,7 +23,7 @@ const Header = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link ><Link to='/' style={{textDecoration:'none', color: 'whitesmoke', fontWeight:'bold', marginLeft:'60px', fontSize:'16px'}}>HOME</Link></Nav.Link>
-              <Nav.Link ><Link to='/services' style={{textDecoration:'none', color: 'whitesmoke', fontWeight:'bold', marginLeft:'60px', fontSize:'16px'}}>SERVICES</Link></Nav.Link>
+              <Nav.Link ><Link to='/allServices' style={{textDecoration:'none', color: 'whitesmoke', fontWeight:'bold', marginLeft:'60px', fontSize:'16px'}}>SERVICES</Link></Nav.Link>
               <Nav.Link ><Link to='/blog' style={{textDecoration:'none', color: 'whitesmoke', fontWeight:'bold', marginLeft:'60px',fontSize:'16px'}}>BLOG</Link></Nav.Link>
               
             </Nav>
