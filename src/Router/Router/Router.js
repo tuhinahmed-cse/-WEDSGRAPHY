@@ -7,6 +7,7 @@ import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Login/Register";
 import AllServices from "../../Pages/Services/AllServices";
 import Services from "../../Pages/Services/Services";
+import ServicesDetails from "../../Pages/ServicesDetails/ServicesDetails";
 import ErrorPage from "../../Pages/SharedPages/ErrorPage/ErrorPage";
 import Slider from "../../Pages/Slider/Slider";
 
@@ -30,6 +31,12 @@ export const router = createBrowserRouter([
             path: '/allServices',
             element:<AllServices></AllServices> 
         },
+
+        {
+            path: '/serviceDetails/:id',
+            element: <ServicesDetails></ServicesDetails>,
+            loader: ({params})=> fetch(`http://localhost:5000/allServices/${params.id}`)
+          },
 
 
         {

@@ -1,13 +1,17 @@
 import React from 'react';
-import { Button, Card } from 'react-bootstrap';
+import { Button, Card, Container, Row } from 'react-bootstrap';
 import { FaDollarSign, FaMoneyBill, FaServicestack } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
-const AllServicesCard = ({service}) => {
+const ServicesDetails = () => {
 
-    const {_id, title, service_id, img, price, description}= service;
+    const {title, _id, img, price, description, service_id } =useLoaderData();
     return (
-        <div>
+        <Container>
+            <h3 style={{ color: '#E59866', marginTop: '40px', marginBottom:'30px', fontFamily: 'cursive', textAlign: 'center' }}>WELCOME TO SERVICE DETAILS AND REVIEW PAGE
+            </h3>
+            <Row>
+            <div>
             <Card className="mb-5">
       <Card.Header className='d-flex justify-content-between align-items-center'>
        
@@ -22,12 +26,9 @@ const AllServicesCard = ({service}) => {
         <Card.Img variant="top" src={img} />
         <Card.Text>
             <h6 className='mt-4'style={{ color: '#E59866', fontFamily: 'cursive', textAlign: 'center' }}> <FaServicestack></FaServicestack> Service Details</h6>
-          {
-            description.length > 250 ?
-            <p>{description.slice(0, 100) + '...'} <Link to={`/serviceDetails/${_id}`}><Button variant="outline-info">View Details</Button></Link> </p>
-            :
+            
             <p>{description}</p>
-          }
+        
         </Card.Text>
       </Card.Body>
       <Card.Footer className="d-flex justify-content-between">
@@ -36,7 +37,9 @@ const AllServicesCard = ({service}) => {
       </Card.Footer>
     </Card>
         </div>
+            </Row>
+        </Container>
     );
 };
 
-export default AllServicesCard;
+export default ServicesDetails;

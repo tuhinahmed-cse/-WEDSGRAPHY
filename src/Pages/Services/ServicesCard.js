@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const ServicesCard = ({service}) => {
 
-    const {title, service_id, img, price, description}= service;
+    const {title, _id, img, price, description}= service;
     return (
         <div>
             <Card className="mb-5">
@@ -24,7 +24,7 @@ const ServicesCard = ({service}) => {
             <h6 className='mt-4'style={{ color: '#E59866', fontFamily: 'cursive', textAlign: 'center' }}> <FaServicestack></FaServicestack> Service Details</h6>
           {
             description.length > 250 ?
-            <p>{description.slice(0, 100) + '...'} <Link to={`/news/${service_id}`}><Button variant="outline-info">View Details</Button></Link> </p>
+            <p>{description.slice(0, 100) + '...'} <Link to={`/serviceDetails/${_id}`}><Button variant="outline-info">View Details</Button></Link> </p>
             :
             <p>{description}</p>
           }
