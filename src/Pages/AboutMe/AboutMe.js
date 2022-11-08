@@ -1,6 +1,7 @@
 import React from 'react';
 import {  Col, Container, Row } from 'react-bootstrap';
 import { FaCamera, FaConnectdevelop, FaTools } from 'react-icons/fa';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 import img from '../../assets/pro.jpg'
 
 const AboutMe = () => {
@@ -32,10 +33,14 @@ const AboutMe = () => {
 
         <Col lg='6' sm='12'>
 
-            <img src={img}
+            <PhotoProvider>
+                <PhotoView src={img}>
+                <img src={img}
             style={{width:'300px', height:'300px', marginLeft:'50px', marginTop: '120px' }}
             
             alt="" />
+                </PhotoView>
+            </PhotoProvider>
 
         </Col>
 

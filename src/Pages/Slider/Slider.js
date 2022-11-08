@@ -1,8 +1,10 @@
 import React from 'react';
 import { Carousel, Container, Row } from 'react-bootstrap';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 import img from '../../assets/img1.webp';
 import img1 from '../../assets/img2.webp';
 import img2 from '../../assets/img4.jpg';
+import 'react-photo-view/dist/react-photo-view.css';
 
 const Slider = () => {
     return (
@@ -14,24 +16,32 @@ const Slider = () => {
             <Row>
             <Carousel className=''>
       <Carousel.Item>
-        <img
+        <PhotoProvider>
+          <PhotoView src={img1}>
+          <img
           className="d-block w-100"
           src={img1}
           alt="First slide"
           style={{height:'80vh'}}
         />
+          </PhotoView>
+        </PhotoProvider>
         <Carousel.Caption>
           <h3>Make your wedding a wonderful story.</h3>
           <p>I am here to take every moment of your beautiful memories in my camera.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img
+        <PhotoProvider>
+          <PhotoView src={img}>
+          <img
           className="d-block w-100"
           src={img}
           alt="Second slide"
           style={{height:'80vh'}}
         />
+          </PhotoView>
+        </PhotoProvider>
 
         <Carousel.Caption>
           <h3>Make your wedding a wonderful story.</h3>
@@ -39,12 +49,16 @@ const Slider = () => {
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img
+        <PhotoProvider>
+          <PhotoView src={img2}>
+          <img
           className="d-block w-100"
           src={img2}
           alt="Third slide"
           style={{height:'80vh'}}
         />
+          </PhotoView>
+        </PhotoProvider>
 
         <Carousel.Caption>
           <h3>Make your wedding a wonderful story.</h3>

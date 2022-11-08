@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Card, } from 'react-bootstrap';
 import { FaDollarSign, FaMoneyBill, FaServicestack } from 'react-icons/fa';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link } from 'react-router-dom';
 
 const ServicesCard = ({service}) => {
@@ -19,7 +20,11 @@ const ServicesCard = ({service}) => {
       </Card.Header>
       <Card.Body>
         
-        <Card.Img variant="top" src={img} />
+        <PhotoProvider>
+          <PhotoView src={img}>
+          <Card.Img variant="top" src={img} />
+          </PhotoView>
+        </PhotoProvider>
         <Card.Text>
             <h6 className='mt-4'style={{ color: '#E59866', fontFamily: 'cursive', textAlign: 'center' }}> <FaServicestack></FaServicestack> Service Details</h6>
           {
