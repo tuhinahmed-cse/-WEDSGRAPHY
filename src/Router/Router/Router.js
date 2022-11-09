@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../layouts/Main";
-import AboutMe from "../../Pages/AboutMe/AboutMe";
+import AddNewService from "../../Pages/AddNewService/AddNewService";
 import Blog from "../../Pages/Blog/Blog";
 import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login";
@@ -9,7 +9,8 @@ import AllServices from "../../Pages/Services/AllServices";
 import Services from "../../Pages/Services/Services";
 import ServicesDetails from "../../Pages/ServicesDetails/ServicesDetails";
 import ErrorPage from "../../Pages/SharedPages/ErrorPage/ErrorPage";
-import Slider from "../../Pages/Slider/Slider";
+import PrivateRouter from "../PrivateRouter/PrivateRouter";
+
 
 export const router = createBrowserRouter([
 
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
             path: '/allServices',
             element:<AllServices></AllServices> 
         },
+        {
+            path: '/newService',
+            element:<PrivateRouter><AddNewService></AddNewService></PrivateRouter> 
+        },
 
         {
             path: '/serviceDetails/:id',
@@ -43,6 +48,7 @@ export const router = createBrowserRouter([
             path: '/blog',
             element:<Blog></Blog>
         },
+        
 
         {
             path: '/login',

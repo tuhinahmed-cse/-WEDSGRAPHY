@@ -31,12 +31,12 @@ const Header = () => {
               {/* <Nav.Link ><Link to='/login'>Login</Link></Nav.Link> */}
 
               {
-                                user?.uid ?
+                                user?.email ?
                                     
                                         <>
                                         <Nav.Link ><Link to='/blog' style={{textDecoration:'none', color: 'whitesmoke', fontWeight:'bold', marginLeft:'60px',fontSize:'16px'}}>My Reviews</Link></Nav.Link>
 
-                                        <Nav.Link ><Link to='/blog' style={{textDecoration:'none', color: 'whitesmoke', fontWeight:'bold', marginLeft:'60px', marginRight:'40px',fontSize:'16px'}}>Add Service</Link></Nav.Link>
+                                        <Nav.Link ><Link to='/newService' style={{textDecoration:'none', color: 'whitesmoke', fontWeight:'bold', marginLeft:'60px', marginRight:'40px',fontSize:'16px'}}>Add Service</Link></Nav.Link>
 
                                         <Button variant="light" onClick={handleLogOut} style={{color:'goldenrod',fontWeight:'700'}}>Log out</Button>
 
