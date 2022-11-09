@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Container, Table } from 'react-bootstrap';
+import { Col, Container, Row, Table } from 'react-bootstrap';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import UserReviewsRow from './UserReviewsRow';
 
@@ -22,7 +23,7 @@ const UserReviews = () => {
 
     const handleDelete = id =>{
 
-        const proceed = window.confirm('Are you sure, you want to cancel this order');
+        const proceed = window.confirm('Are you sure, you want to Delect review');
         if (proceed){
 
             fetch(`http://localhost:5000/reviews/${id}`, {
@@ -33,7 +34,7 @@ const UserReviews = () => {
 
                 if(data.deletedCount > 0){
 
-                    alert('deleted successfully');
+                    toast.success('Deleted Successfully');
                     const remaining = userReviews.filter(rew => rew._id !== id);
                     setUserReviews(remaining);
                 }
@@ -45,9 +46,10 @@ const UserReviews = () => {
     }
 
     return (
-        <Container>
+        <Container className='mt-5'>
+            <h2  style={{ color: '#E59866', fontFamily: 'cursive', textAlign:'center' }}> List Of My All Review</h2>
 
-            <h3 style={{ color: '#E59866', fontFamily: 'cursive' }}>
+<h3 style={{ color: '#E59866', fontFamily: 'cursive' }}>
                 Total Review: {userReviews.length}
 
 
