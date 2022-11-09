@@ -1,22 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
+import { useLoaderData } from 'react-router-dom';
 import ReviewsTable from './ReviewsTable';
 
 const Reviews = () => {
 
     const [reviews, setReviews] = useState([]);
+
+    const {service_id} = useLoaderData();
+    
    
 
    
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch(`http://localhost:5000/reviews/${service_id}`)
             .then(res => res.json())
             .then(data => setReviews(data))
             
 
-    }, []);
+    }, [service_id]);
 
     return (
         <div>
@@ -37,9 +41,8 @@ const Reviews = () => {
       </thead>
       <tbody>
         
-        {
-            reviews.map(reeview =><ReviewsTable key={reeview._id} reeview={reeview}></ReviewsTable> )
-        }
+        
+           <ReviewsTable  reeview={reviews}></ReviewsTable> 
         
       </tbody>
     </Table>
