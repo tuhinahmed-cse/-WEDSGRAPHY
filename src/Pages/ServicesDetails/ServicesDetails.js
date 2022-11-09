@@ -3,6 +3,7 @@ import { Button, Card, Container, Row } from 'react-bootstrap';
 import { FaDollarSign, FaMoneyBill, FaServicestack } from 'react-icons/fa';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link, useLoaderData } from 'react-router-dom';
+import Reviews from '../Reviews/Reviews';
 
 const ServicesDetails = () => {
 
@@ -46,6 +47,11 @@ const ServicesDetails = () => {
             <div>
             <h3 style={{ color: '#E59866', marginTop: '40px', marginBottom:'30px', fontFamily: 'cursive', textAlign: 'center' }}>Review for This Service
             </h3>
+
+            <div>
+
+                <Reviews></Reviews>
+            </div>
 
             </div>
         </Container>
