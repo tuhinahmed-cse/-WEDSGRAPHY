@@ -1,14 +1,53 @@
 import React, { useContext } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const ReviewAdd = () => {
     const { user} = useContext(AuthContext);
 
-const handleSubmit = event =>{
+    const handleSubmit = (event) =>{
+        event.preventDefault();
+        const form = event.target;
+        
+        const service_id = form.service_id.value;
+        const title = form.title.value;
+        const name = form.name.value;
+        const img = form.img.value;
+        const email = form.email.value;
+        const review = form.review.value;
+        const time = form.time.value;
 
+        const send = {
+            service_id,
+            title,
+            name,
+            img,
+            email,
+            review,
+            time
+        }
 
-}
+        fetch('http://localhost:5000/reviewadd', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(send)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if(data.acknowledged){
+                    toast.success(' Review Added successfully')
+                    form.reset();
+                    
+                }
+            })
+            .catch(er => console.error(er));
+        
+
+    }
 
     return (
         <div style={{backgroundColor:"#D6EAF8", height:'95vh'}}>

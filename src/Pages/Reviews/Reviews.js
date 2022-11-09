@@ -22,9 +22,10 @@ const Reviews = () => {
             <Table striped bordered hover>
       <thead>
         <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Review Details</th>
         </tr>
       </thead>
       <tbody>
