@@ -1,9 +1,9 @@
 import React from 'react';
-import { Image } from 'react-bootstrap';
+import { Button, Image } from 'react-bootstrap';
 
-const UserReviewsRow = ({userReview}) => {
+const UserReviewsRow = ({userReview, handleDelete }) => {
 
-    const {img, name, email,review, time} = userReview;
+    const {_id, img, name, email,review, time} = userReview;
 
     console.log(userReview)
     return (
@@ -17,6 +17,9 @@ const UserReviewsRow = ({userReview}) => {
           <td>{email}</td>
           <td>{review}</td>
           <td>{time}</td>
+          <td> <Button className='me-3' variant="warning">Edit</Button>
+          <Button onClick={() => handleDelete(_id)} variant="danger">Delete</Button>
+           </td>
         </tr>
     );
 };

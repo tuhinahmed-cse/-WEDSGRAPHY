@@ -20,7 +20,29 @@ const UserReviews = () => {
 
     }, [user?.email])
 
-    console.log(userReviews)
+    const handleDelete = id =>{
+
+        const proceed = window.confirm('Are you sure, you want to cancel this order');
+        if (proceed){
+
+            fetch(`http://localhost:5000/reviews/${id}`, {
+                method: 'DELETE'
+            })
+            .then(res => res.json())
+            .then(data =>{
+
+                if(data.deletedCount > 0){
+
+                    alert('deleted successfully');
+                    const remaining = userReviews.filter(rew => rew._id !== id);
+                    setUserReviews(remaining);
+                }
+            })
+
+
+        }
+
+    }
 
     return (
         <Container>
@@ -40,13 +62,14 @@ const UserReviews = () => {
                         <th>Email</th>
                         <th>Review Details</th>
                         <th>Time</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
 
                     {
 
-                        userReviews.map(userReview => <UserReviewsRow key={userReview._id} userReview={userReview}></UserReviewsRow>)
+                        userReviews.map(userReview => <UserReviewsRow key={userReview._id} userReview={userReview} handleDelete={handleDelete} ></UserReviewsRow>)
                     }
 
 
