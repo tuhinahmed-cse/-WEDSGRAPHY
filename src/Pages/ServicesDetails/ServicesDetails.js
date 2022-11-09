@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Card, Container, Row } from 'react-bootstrap';
 import { FaDollarSign, FaMoneyBill, FaServicestack } from 'react-icons/fa';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import Reviews from '../Reviews/Reviews';
 
+
 const ServicesDetails = () => {
+
+    const { user} = useContext(AuthContext);
+
 
     const {title, _id, img, price, description, service_id } =useLoaderData();
     return (
@@ -51,6 +56,22 @@ const ServicesDetails = () => {
             <div>
 
                 <Reviews></Reviews>
+            </div>
+
+            {
+                user?.email ? 
+                <>
+                <Link to='/newReview'><Button variant="primary">Add a Review</Button></Link>
+                </> :
+                <>
+                <Link to='/login'><Button variant="primary">Please Login to Add a Review</Button></Link>
+                </>
+            }
+
+            
+            <div>
+
+
             </div>
 
             </div>
