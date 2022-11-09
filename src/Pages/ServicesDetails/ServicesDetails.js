@@ -4,6 +4,7 @@ import { FaDollarSign, FaMoneyBill, FaServicestack } from 'react-icons/fa';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 import ReviewAdd from '../Reviews/ReviewAdd';
 import Reviews from '../Reviews/Reviews';
 
@@ -14,6 +15,8 @@ const ServicesDetails = () => {
 
 
     const {title, _id, img, price, description, service_id } =useLoaderData();
+
+    useTitle('Details')
     return (
         <Container>
             <h3 style={{ color: '#E59866', marginTop: '40px', marginBottom:'30px', fontFamily: 'cursive', textAlign: 'center' }}>WELCOME TO SERVICE DETAILS AND REVIEW PAGE

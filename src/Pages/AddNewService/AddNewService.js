@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import toast from 'react-hot-toast';
+import useTitle from '../../hooks/useTitle';
 
 const AddNewService = () => {
 
@@ -43,7 +44,7 @@ const AddNewService = () => {
         
 
     }
-
+useTitle('Add-Service')
     return (
         <div style={{backgroundColor:"#D6EAF8", height:'95vh'}}>
             <Container>

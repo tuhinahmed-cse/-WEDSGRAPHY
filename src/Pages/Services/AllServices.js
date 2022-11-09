@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import useTitle from '../../hooks/useTitle';
 import AllServicesCard from './AllServicesCard';
 
 const AllServices = () => {
@@ -11,6 +12,8 @@ const AllServices = () => {
             .then(res => res.json())
             .then(data => setAllServices(data))
     }, []);
+
+    useTitle('Services')
     return (
         <Container>
             <h3 style={{ color: '#E59866', marginTop: '80px', fontFamily: 'cursive', textAlign: 'center' }}>WELCOME TO MY SERVICES PAGE

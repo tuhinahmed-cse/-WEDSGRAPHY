@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Col, Container, Row, Table } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 import UserReviewsRow from './UserReviewsRow';
 
 const UserReviews = () => {
@@ -44,6 +45,8 @@ const UserReviews = () => {
         }
 
     }
+
+    useTitle('My-Review')
 
     return (
         <Container className='mt-5'>

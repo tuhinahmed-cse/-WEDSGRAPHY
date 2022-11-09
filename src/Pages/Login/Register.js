@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { FaCameraRetro} from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 
 const Register = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext);
@@ -51,6 +52,8 @@ const handleUpdateProfile = (name, photoURL) =>{
     .then(()=>{})
     .catch(error =>console.error(error));
   }
+
+  useTitle('Register')
 
 
 

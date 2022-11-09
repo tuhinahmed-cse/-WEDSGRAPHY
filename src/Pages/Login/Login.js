@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { FaCameraRetro, FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 
 const Login = () => {
 
@@ -55,6 +56,8 @@ const Login = () => {
         .catch(error => console.error(error))
     
     }
+
+    useTitle('Login')
 
     return (
         <div style= {{ backgroundColor: '#F5EEF8', backgroundImage: `url(https://i.pinimg.com/originals/6c/b2/fc/6cb2fc7aa33ba8777830de4d99a1e140.jpg)`, }}>
