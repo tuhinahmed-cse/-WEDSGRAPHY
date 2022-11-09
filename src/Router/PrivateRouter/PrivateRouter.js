@@ -14,10 +14,11 @@ const PrivateRouter = ({children}) => {
         return <Spinner animation="border" variant="primary"></Spinner>
     }
 
-    if(!user){
-        return <Navigate to='/login' state={{from: location}} replace></Navigate>
-       }
-       return children;
+    if(user){
+        return children;
+    }
+
+    return <Navigate to="/login" state={{from: location}} replace></Navigate>;
 
   
 };

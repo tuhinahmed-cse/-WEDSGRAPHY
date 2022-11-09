@@ -30,8 +30,8 @@ const Login = () => {
             console.log(user);
             form.reset();
             setError('');
-            navigate(from, {replace:true});
-            toast.success('Login SucessFully! Thank You')
+             toast.success('Login SucessFully! Thank You');
+             navigate(from, {replace:true});
         })
         .catch(error => {
           console.error(error);
@@ -48,8 +48,8 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
+            toast.success('Login SucessFully! Thank You');
             navigate(from, {replace:true});
-            toast.success('Login SucessFully! Thank You')
     
         })
         .catch(error => console.error(error))

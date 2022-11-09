@@ -11,7 +11,9 @@ import AllServices from "../../Pages/Services/AllServices";
 import Services from "../../Pages/Services/Services";
 import ServicesDetails from "../../Pages/ServicesDetails/ServicesDetails";
 import ErrorPage from "../../Pages/SharedPages/ErrorPage/ErrorPage";
-import PrivateRouter from "../PrivateRouter/PrivateRouter";
+import UserReviews from "../../Pages/UserReviews/UserReviews";
+import PrivateRouter from "../PrivateRouter/PrivateRouter"
+
 
 
 export const router = createBrowserRouter([
@@ -36,7 +38,7 @@ export const router = createBrowserRouter([
         },
         {
             path: '/newService',
-            element:<PrivateRouter><AddNewService></AddNewService></PrivateRouter> 
+            element:<PrivateRouter><AddNewService></AddNewService></PrivateRouter>
         },
 
         {
@@ -56,11 +58,17 @@ export const router = createBrowserRouter([
             loader: ({params})=> fetch(`http://localhost:5000/allServices/${params.id}`)
           },
 
+          {
+            path: '/myreviews',
+            element:<PrivateRouter><UserReviews></UserReviews></PrivateRouter> 
+        },
+
 
         {
             path: '/blog',
             element:<Blog></Blog>
         },
+        
         
 
         {
