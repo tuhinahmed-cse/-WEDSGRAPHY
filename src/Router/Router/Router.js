@@ -41,7 +41,7 @@ export const router = createBrowserRouter([
 
         {
             path: '/reviews/:id',
-            element: <Reviews></Reviews>,
+            element: <PrivateRouter><Reviews></Reviews></PrivateRouter>,
             loader: ({params})=> fetch(`http://localhost:5000/reviews/${params.id}`)
         },
         {

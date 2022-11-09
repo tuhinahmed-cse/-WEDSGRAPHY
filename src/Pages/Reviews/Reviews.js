@@ -22,10 +22,14 @@ const Reviews = () => {
 
     }, [service_id]);
 
+    console.log(reviews)
+
     return (
         <div>
             <h3 style={{ color: '#E59866',  fontFamily: 'cursive' }}>
              Total Review: {reviews.length}
+
+            
             
             </h3>
 
@@ -41,7 +45,11 @@ const Reviews = () => {
       </thead>
       <tbody>
         
-        
+        {
+
+          reviews.map(reeview => <ReviewsTable key={reeview._id}  reeview={reeview}></ReviewsTable>)
+        }
+
            <ReviewsTable  reeview={reviews}></ReviewsTable> 
         
       </tbody>
