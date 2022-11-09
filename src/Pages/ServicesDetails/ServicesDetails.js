@@ -4,6 +4,7 @@ import { FaDollarSign, FaMoneyBill, FaServicestack } from 'react-icons/fa';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import ReviewAdd from '../Reviews/ReviewAdd';
 import Reviews from '../Reviews/Reviews';
 
 
@@ -61,7 +62,9 @@ const ServicesDetails = () => {
             {
                 user?.email ? 
                 <>
-                <Link to='/newReview'><Button variant="primary">Add a Review</Button></Link>
+                {/* <Link to='/newReview'><Button variant="primary">Add a Review</Button></Link> */}
+
+                <ReviewAdd  service_id={service_id} title={title} _id={_id}></ReviewAdd>
                 </> :
                 <>
                 <Link to='/login'><Button variant="primary">Please Login to Add a Review</Button></Link>

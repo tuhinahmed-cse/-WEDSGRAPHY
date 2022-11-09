@@ -5,16 +5,22 @@ import ReviewsTable from './ReviewsTable';
 const Reviews = () => {
 
     const [reviews, setReviews] = useState([]);
+   
+
+   
+
 
     useEffect(() => {
         fetch('http://localhost:5000/reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
+            
+
     }, []);
 
     return (
         <div>
-            <h3>
+            <h3 style={{ color: '#E59866',  fontFamily: 'cursive' }}>
              Total Review: {reviews.length}
             
             </h3>

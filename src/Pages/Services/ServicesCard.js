@@ -29,7 +29,7 @@ const ServicesCard = ({service}) => {
             <h6 className='mt-4'style={{ color: '#E59866', fontFamily: 'cursive', textAlign: 'center' }}> <FaServicestack></FaServicestack> Service Details</h6>
           {
             description.length > 250 ?
-            <p>{description.slice(0, 100) + '...'} <Link to={`/serviceDetails/${_id}`}><Button variant="outline-info">View Details</Button></Link> </p>
+            <p>{description.slice(0, 100) + '...'} <Link to={`/serviceDetails/${_id}`}>Read More</Link> </p>
             :
             <p>{description}</p>
           }
@@ -38,6 +38,8 @@ const ServicesCard = ({service}) => {
       <Card.Footer className="d-flex justify-content-between">
 
           <h5 style={{ color: '#E59866', fontFamily: 'cursive', textAlign: 'center' }}> <FaMoneyBill style={{ fontSize:'40px'}} ></FaMoneyBill> Price For This Service : {price}<FaDollarSign></FaDollarSign></h5>
+
+          <Link to={`/serviceDetails/${_id}`}><Button variant="outline-info">View Details</Button></Link>
       </Card.Footer>
     </Card>
         </div>

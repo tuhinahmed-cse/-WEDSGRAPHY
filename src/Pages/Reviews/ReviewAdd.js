@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext} from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
-const ReviewAdd = () => {
+const ReviewAdd = ({service_id, title, _id}) => {
     const { user} = useContext(AuthContext);
+    
 
     const handleSubmit = (event) =>{
         event.preventDefault();
@@ -41,7 +42,8 @@ const ReviewAdd = () => {
                 if(data.acknowledged){
                     toast.success(' Review Added successfully')
                     form.reset();
-                    
+                   window.location.reload();
+                   
                     
                 }
             })
@@ -51,7 +53,7 @@ const ReviewAdd = () => {
     }
 
     return (
-        <div style={{backgroundColor:"#D6EAF8", height:'95vh'}}>
+        <div style={{backgroundColor:"#D6EAF8", height:'50vh'}}>
             <Container>
         <h3 className='mb-4' style={{ color: '#E59866', padding:'30px', fontFamily: 'cursive', textAlign: 'center' }}>PLEASE ADD YOUR REVIEW !!
             </h3>
@@ -62,37 +64,33 @@ const ReviewAdd = () => {
           <Form onSubmit={handleSubmit}>
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Service ID</Form.Label>
-        <Form.Control type="text" name='service_id'  placeholder="Service ID" />
+        <Form.Control type="hidden" name='service_id' defaultValue={service_id} placeholder="Service ID" readOnly />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Service Title</Form.Label>
-        <Form.Control type="text" name='title' placeholder="Service Title" />
+        <Form.Control type="hidden" name='title' defaultValue={title} placeholder="Service Title" readOnly />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Your Name</Form.Label>
-        <Form.Control type="text" name='name' defaultValue={user?.displayName} placeholder="Name" readOnly />
+        <Form.Control type="hidden" name='name' defaultValue={user?.displayName} placeholder="Name" readOnly />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Your Image</Form.Label>
-        <Form.Control type="text" name='img' defaultValue={user?.photoURL} placeholder="Image" readOnly />
+        <Form.Control type="hidden" name='img' defaultValue={user?.photoURL} placeholder="Image" readOnly />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Your Email</Form.Label>
-        <Form.Control type="email" name='email' defaultValue={user?.email} placeholder="email" readOnly />
+        
+        <Form.Control  type="hidden" name='email' defaultValue={user?.email} placeholder="email" readOnly />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Your Review</Form.Label>
-        <Form.Control type="text" name='review' placeholder="Enter Your Review" />
+        <Form.Control type="text" name='review' placeholder="Enter Your Review" required />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Review Time</Form.Label>
-        <Form.Control type="time" name='time' placeholder="" />
+        <Form.Control type="time" name='time' placeholder="" required />
       </Form.Group>
 
 
