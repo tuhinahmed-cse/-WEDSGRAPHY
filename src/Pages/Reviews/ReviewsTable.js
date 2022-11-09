@@ -1,13 +1,19 @@
 import React from 'react';
-const ReviewsTable = ({review}) => {
+import { Image } from 'react-bootstrap';
+const ReviewsTable = ({reeview}) => {
 
-    const {title,user_email, description } =review;
+    const {img, name, email,review, time } =reeview;
     return (
         <tr>
-          <td>{title}</td>
-          <td>{user_email}</td>
-          <td>{description}</td>
-          <td>{description}</td>
+          <td> <Image
+                    style={{ height: '30px' }}
+                    roundedCircle
+                    src={img}>
+                  </Image> </td>
+          <td>{name}</td>
+          <td>{email}</td>
+          <td>{review}</td>
+          <td>{time}</td>
         </tr>
     );
 };

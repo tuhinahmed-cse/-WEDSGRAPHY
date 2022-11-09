@@ -15,23 +15,24 @@ const Reviews = () => {
     return (
         <div>
             <h3>
-            Review: {reviews.length}
+             Total Review: {reviews.length}
             
             </h3>
 
             <Table striped bordered hover>
       <thead>
         <tr>
-          <th>Image</th>
+          <th> Reviewer Image</th>
           <th>Name</th>
           <th>Email</th>
           <th>Review Details</th>
+          <th>Time</th>
         </tr>
       </thead>
       <tbody>
         
         {
-            reviews.map(review =><ReviewsTable key={review._id} review={review}></ReviewsTable> )
+            reviews.map(reeview =><ReviewsTable key={reeview._id} reeview={reeview}></ReviewsTable> )
         }
         
       </tbody>
