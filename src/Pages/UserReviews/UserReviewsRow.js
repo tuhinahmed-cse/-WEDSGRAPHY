@@ -3,11 +3,12 @@ import { Button, Image } from 'react-bootstrap';
 
 const UserReviewsRow = ({userReview, handleDelete }) => {
 
-    const {_id, img, name, email,review, time} = userReview;
+    const {_id, title, img, name, email,review, time} = userReview;
 
     console.log(userReview)
     return (
         <tr>
+            <td>{title}</td>
           <td> <Image
                     style={{ height: '30px' }}
                     roundedCircle

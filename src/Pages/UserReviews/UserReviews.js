@@ -47,6 +47,12 @@ const UserReviews = () => {
 
     return (
         <Container className='mt-5'>
+
+            {
+                
+                    userReviews.length == 0 && <h2 style={{color:"red", textAlign:'center', marginTop:'350px', marginBottom:'800px'}}>No Reviews Found! Please Review First!!</h2>
+                
+            }
             <h2  style={{ color: '#E59866', fontFamily: 'cursive', textAlign:'center' }}> List Of My All Review</h2>
 
 <h3 style={{ color: '#E59866', fontFamily: 'cursive' }}>
@@ -59,6 +65,7 @@ const UserReviews = () => {
             <Table striped bordered hover>
                 <thead>
                     <tr>
+                        <th> Service Name</th>
                         <th> Reviewer Image</th>
                         <th>Name</th>
                         <th>Email</th>
