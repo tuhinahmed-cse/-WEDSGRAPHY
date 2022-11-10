@@ -65,7 +65,7 @@ const ReviewAdd = ({service_id, title, _id}) => {
         <h3 className='mb-4' style={{ color: '#E59866', padding:'30px', fontFamily: 'cursive', textAlign: 'center' }}>PLEASE ADD YOUR REVIEW !!
             </h3>
         <Row>
-          <Col></Col>
+          <Col></Col>  
           <Col lg='6'>
 
           <Form onSubmit={handleSubmit}>
