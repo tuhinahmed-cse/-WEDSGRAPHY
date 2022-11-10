@@ -5,7 +5,6 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const ReviewAdd = ({service_id, title, _id}) => {
     const { user} = useContext(AuthContext);
-    
 
     const handleSubmit = (event) =>{
         event.preventDefault();
@@ -51,8 +50,17 @@ const ReviewAdd = ({service_id, title, _id}) => {
 
     }
 
+    let showDate = new Date();
+
+  
+
+    let displayToday= showDate.getDate()+'/'+showDate.getMonth()+'/'+showDate.getFullYear()+'-'+showDate.getHours()+':'+showDate.getMinutes()+':'+showDate.getSeconds();
+    
+
+    
+
     return (
-        <div style={{backgroundColor:"#D6EAF8", height:'70vh'}}>
+        <div style={{backgroundColor:"#D6EAF8", height:'50vh'}}>
             <Container>
         <h3 className='mb-4' style={{ color: '#E59866', padding:'30px', fontFamily: 'cursive', textAlign: 'center' }}>PLEASE ADD YOUR REVIEW !!
             </h3>
@@ -88,8 +96,7 @@ const ReviewAdd = ({service_id, title, _id}) => {
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Review Time</Form.Label>
-        <Form.Control type="time" name='time' placeholder="" required />
+        <Form.Control type="hidden" value= {displayToday}  name='time'  placeholder="" readOnly />
       </Form.Group>
 
 
