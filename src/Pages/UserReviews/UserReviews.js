@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Col, Container, Row, Table } from 'react-bootstrap';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../hooks/useTitle';
 import UserReviewsRow from './UserReviewsRow';
@@ -46,6 +47,13 @@ const UserReviews = () => {
 
     }
 
+
+    const navigate = useNavigate();
+
+    const handleEdit = id =>{
+        navigate(`/editreview/${id}`);
+    }
+
     useTitle('My-Review')
 
     return (
@@ -81,7 +89,7 @@ const UserReviews = () => {
 
                     {
 
-                        userReviews.map(userReview => <UserReviewsRow key={userReview._id} userReview={userReview} handleDelete={handleDelete} ></UserReviewsRow>)
+                        userReviews.map(userReview => <UserReviewsRow key={userReview._id} userReview={userReview} handleDelete={handleDelete} handleEdit={handleEdit} ></UserReviewsRow>)
                     }
 
 

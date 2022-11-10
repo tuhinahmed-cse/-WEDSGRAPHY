@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Image } from 'react-bootstrap';
 
-const UserReviewsRow = ({userReview, handleDelete }) => {
+const UserReviewsRow = ({userReview, handleDelete, handleEdit }) => {
 
     const {_id, title, img, name, email,review, time} = userReview;
 
@@ -18,7 +18,7 @@ const UserReviewsRow = ({userReview, handleDelete }) => {
           <td>{email}</td>
           <td>{review}</td>
           <td>{time}</td>
-          <td> <Button className='me-3' variant="warning">Edit</Button>
+          <td> <Button onClick={() => handleEdit(_id)} className='me-3' variant="warning">Edit</Button>
           <Button onClick={() => handleDelete(_id)} variant="danger">Delete</Button>
            </td>
         </tr>

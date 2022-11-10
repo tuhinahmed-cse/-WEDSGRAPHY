@@ -1,14 +1,34 @@
-import React, { useContext} from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import toast from 'react-hot-toast';
-import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { useNavigate, useParams } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
-const ReviewAdd = ({service_id, title, _id}) => {
-    const { user} = useContext(AuthContext);
-    
+const EditReview = () => {
 
-    const handleSubmit = (event) =>{
-        event.preventDefault();
+    const {user} = useContext(AuthContext);
+
+    const [userReview, setUserReview] = useState({});
+    const navigate = useNavigate();
+
+    const router = useParams();
+    const {id} =router;
+    useEffect(() => {
+
+        fetch(`http://localhost:5000/reviewss/${id}`)
+            .then(res => res.json())
+            .then(data => setUserReview(data))
+
+
+    }, [id])
+
+console.log(userReview)
+
+
+const handleSubmit =event => {
+
+
+    event.preventDefault();
         const form = event.target;
         const service_id = form.service_id.value;
         const title = form.title.value;
@@ -17,6 +37,7 @@ const ReviewAdd = ({service_id, title, _id}) => {
         const email = form.email.value;
         const review = form.review.value;
         const time = form.time.value;
+
 
         const send = {
             service_id,
@@ -28,33 +49,28 @@ const ReviewAdd = ({service_id, title, _id}) => {
             time
         }
 
-        fetch('http://localhost:5000/reviewadd', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(send)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if(data.acknowledged){
-                    toast.success(' Review Added successfully')
-                    form.reset();
-                   window.location.reload();
-                   
-                    
-                }
-            })
-            .catch(er => console.error(er));
-        
 
-    }
+        fetch(`http://localhost:5000/reviewss/${id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(send)
+    })
+    .then(res => res.json())
+    .then(data => {
+      toast.success('upadate sucessFull');
+      navigate('/myreviews');
+
+    })
+    .catch(err => toast.error(err.message))
+}
+
 
     return (
         <div style={{backgroundColor:"#D6EAF8", height:'50vh'}}>
             <Container>
-        <h3 className='mb-4' style={{ color: '#E59866', padding:'30px', fontFamily: 'cursive', textAlign: 'center' }}>PLEASE ADD YOUR REVIEW !!
+        <h3 className='mb-4' style={{ color: '#E59866', padding:'30px', fontFamily: 'cursive', textAlign: 'center' }}>PLEASE Edit YOUR REVIEW !!
             </h3>
         <Row>
           <Col></Col>
@@ -63,11 +79,12 @@ const ReviewAdd = ({service_id, title, _id}) => {
           <Form onSubmit={handleSubmit}>
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Control type="hidden" name='service_id' defaultValue={service_id} placeholder="Service ID" readOnly />
+        <Form.Control type="hidden" name='service_id' defaultValue={userReview.service_id} placeholder="Service ID" readOnly />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Control type="hidden" name='title' defaultValue={title} placeholder="Service Title" readOnly />
+      <Form.Label> Service Title</Form.Label>
+        <Form.Control type="text" name='title' defaultValue={userReview.title} placeholder="Service Title" readOnly />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -83,13 +100,12 @@ const ReviewAdd = ({service_id, title, _id}) => {
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Your Review</Form.Label>
-        <Form.Control type="text" name='review' placeholder="Enter Your Review" required />
+        <Form.Label> Please Edit Your Review</Form.Label>
+        <Form.Control type="text" name='review' defaultValue={userReview.review} placeholder="Enter Your Review" required />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Review Time</Form.Label>
-        <Form.Control type="time" name='time' placeholder="" required />
+        <Form.Control type="hidden" name='time' defaultValue={userReview.time} placeholder="" required />
       </Form.Group>
 
 
@@ -106,4 +122,4 @@ const ReviewAdd = ({service_id, title, _id}) => {
     );
 };
 
-export default ReviewAdd;
+export default EditReview;

@@ -11,6 +11,7 @@ import AllServices from "../../Pages/Services/AllServices";
 import Services from "../../Pages/Services/Services";
 import ServicesDetails from "../../Pages/ServicesDetails/ServicesDetails";
 import ErrorPage from "../../Pages/SharedPages/ErrorPage/ErrorPage";
+import EditReview from "../../Pages/UserReviews/EditReview/EditReview";
 import UserReviews from "../../Pages/UserReviews/UserReviews";
 import PrivateRouter from "../PrivateRouter/PrivateRouter"
 
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
           {
             path: '/myreviews',
             element:<PrivateRouter><UserReviews></UserReviews></PrivateRouter> 
+        },
+          {
+            path: '/editreview/:id',
+            element:<PrivateRouter><EditReview></EditReview></PrivateRouter> 
         },
 
 
