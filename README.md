@@ -5,7 +5,7 @@ An website to advertise own personal photography for wedding related services.
 
 ## Live Link
 
-Hosted in Firebase -> [WEDSGRAPHY](https://service-review-client-side.web.app/)
+Hosted in Firebase -> [WEDSGRAPHY](https://service-review-client-side.firebaseapp.com/)
 
 ## Features and Description of This Peoject
 
