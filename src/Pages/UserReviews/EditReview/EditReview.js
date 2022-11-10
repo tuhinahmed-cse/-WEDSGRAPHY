@@ -59,7 +59,7 @@ const handleSubmit =event => {
     })
     .then(res => res.json())
     .then(data => {
-      toast.success('upadate sucessFull');
+      toast.success('Review Upadate sucessFull');
       navigate('/myreviews');
 
     })

@@ -52,7 +52,7 @@ const ReviewAdd = ({service_id, title, _id}) => {
     }
 
     return (
-        <div style={{backgroundColor:"#D6EAF8", height:'50vh'}}>
+        <div style={{backgroundColor:"#D6EAF8", height:'70vh'}}>
             <Container>
         <h3 className='mb-4' style={{ color: '#E59866', padding:'30px', fontFamily: 'cursive', textAlign: 'center' }}>PLEASE ADD YOUR REVIEW !!
             </h3>
