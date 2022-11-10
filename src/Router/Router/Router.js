@@ -45,7 +45,7 @@ export const router = createBrowserRouter([
         {
             path: '/reviews/:id',
             element: <PrivateRouter><Reviews></Reviews></PrivateRouter>,
-            loader: ({params})=> fetch(`http://localhost:5000/reviews/${params.id}`)
+            loader: ({params})=> fetch(`https://b6a11-service-review-server-side-one-zeta.vercel.app/reviews/${params.id}`)
         },
         {
             path: '/newReview/',
@@ -56,7 +56,7 @@ export const router = createBrowserRouter([
         {
             path: '/serviceDetails/:id',
             element: <ServicesDetails></ServicesDetails>,
-            loader: ({params})=> fetch(`http://localhost:5000/allServices/${params.id}`)
+            loader: ({params})=> fetch(`https://b6a11-service-review-server-side-one-zeta.vercel.app/allServices/${params.id}`)
           },
 
           {

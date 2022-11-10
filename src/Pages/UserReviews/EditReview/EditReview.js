@@ -15,7 +15,7 @@ const EditReview = () => {
     const {id} =router;
     useEffect(() => {
 
-        fetch(`http://localhost:5000/reviewss/${id}`)
+        fetch(`https://b6a11-service-review-server-side-one-zeta.vercel.app/reviewss/${id}`)
             .then(res => res.json())
             .then(data => setUserReview(data))
 
@@ -50,7 +50,7 @@ const handleSubmit =event => {
         }
 
 
-        fetch(`http://localhost:5000/reviewss/${id}`, {
+        fetch(`https://b6a11-service-review-server-side-one-zeta.vercel.app/reviewss/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json"

@@ -27,7 +27,7 @@ const AddNewService = () => {
             description
         }
 
-        fetch('http://localhost:5000/serviceadd', {
+        fetch('https://b6a11-service-review-server-side-one-zeta.vercel.app/serviceadd', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

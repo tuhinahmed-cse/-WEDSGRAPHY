@@ -27,7 +27,7 @@ const ReviewAdd = ({service_id, title, _id}) => {
             time
         }
 
-        fetch('http://localhost:5000/reviewadd', {
+        fetch('https://b6a11-service-review-server-side-one-zeta.vercel.app/reviewadd', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
