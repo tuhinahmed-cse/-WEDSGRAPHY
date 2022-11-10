@@ -1,9 +1,12 @@
 import React from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import useTitle from '../../hooks/useTitle';
 
 const AddNewService = () => {
+
+  const navigate = useNavigate();
 
 
     const handleSubmit = (event) =>{
@@ -37,6 +40,7 @@ const AddNewService = () => {
                 if(data.acknowledged){
                     toast.success(' Service Added successfully')
                     form.reset();
+                    navigate('/allServices');
                     
                 }
             })
